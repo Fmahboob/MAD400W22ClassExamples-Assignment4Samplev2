@@ -10,6 +10,8 @@
 <!--</form>-->
 
 <!-- No type set -->
+<app-content-card  *ngFor = "let item of (digimonList | typeFilter);" [content]="item"
+ class="individual"></app-content-card>
 <app-content-card appHoverAffect [typeOfElement]="isTheFirstElement || isLast ? 'contentCard' : 'notcard'"
   [class.found]="titleSearch.value === item.title"
   *ngFor="let item of (digimonList | typeFilter); first as isTheFirstElement; last as isLast" [content]="item"
