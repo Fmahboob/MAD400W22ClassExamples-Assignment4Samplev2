@@ -1,3 +1,7 @@
 <h1>{{ title }}</h1>
+<form onsubmit="return false">
+    <input type="number" placeholder="Enter ID" #id>
+    <button (click)="findDigimon(id.value)">Search</button>
+</form>
 <app-messages></app-messages>
 <app-content-list></app-content-list>

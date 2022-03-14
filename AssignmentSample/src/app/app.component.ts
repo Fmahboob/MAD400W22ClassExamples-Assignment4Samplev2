@@ -8,6 +8,7 @@ import { PokemonService } from './services/pokemon-service.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+ 
   title = 'AssignmentSample';
   id = 1;
   digimon: Content[] = [];
@@ -16,7 +17,7 @@ export class AppComponent {
   constructor(private pokemonService: PokemonService) {
     
   }
-findDigimon(id: string){
+public findDigimon(id: string){
   this.id = parseInt(id);
   this.newdigimonList = this.pokemonService.getdigimonList();
   if(this.id > this.newdigimonList.length || this.id < 0){
@@ -24,6 +25,7 @@ findDigimon(id: string){
     
     this.pokemonService.getIndividualDigimon(this.id).subscribe(digimon => {
       this.digimon = digimon;
+      this.digimon.push();
       
     });
    }
