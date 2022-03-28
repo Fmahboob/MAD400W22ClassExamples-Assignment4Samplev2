@@ -1,3 +1,4 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Content } from '../helper-files/content-interface';
@@ -11,29 +12,43 @@ import { MessageService } from '../message.service';
 })
 export class PokemonService {
 
-  constructor(private messageService: MessageService) { }
+ 
+
+  constructor(private http: HttpClient) { }
+  
   getdigimonList(): Content[]{
 
     return digimonList;
   }
 
   getdigimonObs(): Observable<Content[]>{
-    const digimon = of(digimonList);
-    this.messageService.add('Pokemos service loaded pokemon')
-    return digimon;
+
+    
+    return this.http.get<Content[]>("api/content");
   }
+
+  private httpOptions = {
+    headers: new HttpHeaders({ 'Content-type': 'application/json' })
+  };
 
   getIndividualDigimon(id: number): Observable<Content[]>{
     let digimon: any;
     if(id > digimonList.length || id < 0){
-
-    
-     this.messageService.add('id {id} is not valid plese enter another id');
      return digimon;
     }
     else {
        digimon = of(digimonList.filter(digimon => digimon.id === id));
-    }this.messageService.add('Digimon from digimonList at id {id} is loaded');
+    }
     return digimon;
+  }
+
+  
+  addContent(newContentItem: Content): Observable<Content>{
+    console.log("Adding a new pokemon: ", newContentItem);
+    return this.http.post<Content>("api/content", newContentItem, this.httpOptions);
+  }
+
+  updateContent(contentItem: Content): Observable<any>{
+    return this.http.put("api/content", contentItem,  this.httpOptions);
   }
 }

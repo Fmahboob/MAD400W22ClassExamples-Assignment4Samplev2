@@ -1,0 +1,36 @@
+<div>
+    <h3>Add Content</h3>
+<div>
+    <label for="name">Title: </label>
+   <input type="text" id="name" #name>
+</div>
+<div>
+    <label for="description">Description: </label>
+    <input type="text" id="description" #description>
+   
+</div>
+<div>
+    <label for="creator">creator: </label>
+    <input type="text" id="creator" #creator>
+   
+</div>
+<div>
+    <label for="imgURL">Imagr URL: </label>
+    <input type="text" id="imgURL" #imgURL>
+   
+</div>
+<div>
+    <label for="type">Type: </label>
+    <input type="text" id="type" #type>
+
+</div>
+
+
+<div>
+    <label for="tag">Tags: </label>
+    <input type="text" id="tags" #tags>
+   
+</div>
+
+    <button (click)="addPokemon(name.value, description.value, creator.value, imgURL.value, type.value, tags.value)">Add Pokemon</button>
+</div>

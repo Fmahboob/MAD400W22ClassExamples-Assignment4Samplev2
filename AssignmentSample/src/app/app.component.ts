@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+
 import { Content } from './helper-files/content-interface';
 import { PokemonService } from './services/pokemon-service.service';
 
@@ -8,7 +9,6 @@ import { PokemonService } from './services/pokemon-service.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
- 
   title = 'AssignmentSample';
   id = 1;
   digimon: Content[] = [];

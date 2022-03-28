@@ -1,8 +1,9 @@
 import { TestBed } from '@angular/core/testing';
+import { InMemoryDataService } from './in-memory-data.service';
 
 import { PokemonService } from './pokemon-service.service';
 
-describe('PokemonService', () => {
+describe('InMemoryDaraService', () => {
   let service: PokemonService;
 
   beforeEach(() => {
